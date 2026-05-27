@@ -42,7 +42,9 @@ const translations = {
 
     // Booking
     bookingTitle: 'Book an Appointment',
-    bookingSubtitle: 'Fill in the form below or book directly on WhatsApp',
+    bookingSubtitle: 'Fill in the form below and book directly on WhatsApp or Website',
+    bookingMethodDivider: 'Fill the form and choose your preferred booking method',
+    bookingMethodHelper: 'The form details will be used for WhatsApp or website booking.',
     yourName: 'Your Name',
     phoneNumber: 'Phone Number',
     selectService: 'Select Service',
@@ -50,6 +52,8 @@ const translations = {
     selectTime: 'Select Time',
     submit: 'Confirm Booking',
     bookOnWhatsapp: 'Book on WhatsApp',
+    bookViaWhatsapp: 'Book via WhatsApp',
+    bookOnWebsite: 'Book on Website',
     bookingSuccess: '🎉 Your appointment has been booked! We will call you to confirm.',
     namePlaceholder: 'Enter your full name',
     phonePlaceholder: 'Enter 10-digit mobile number',
@@ -196,7 +200,9 @@ const translations = {
 
     // Booking
     bookingTitle: 'એપોઇન્ટમેન્ટ બુક કરો',
-    bookingSubtitle: 'નીચેનું ફોર્મ ભરો અથવા સીધા WhatsApp પર બુક કરો',
+    bookingSubtitle: 'નીચેનું ફોર્મ ભરો અને સીધા WhatsApp અથવા Website પર બુક કરો',
+    bookingMethodDivider: 'ફોર્મ ભરો અને તમારી પસંદગીની બુકિંગ પદ્ધતિ પસંદ કરો',
+    bookingMethodHelper: 'ફોર્મની માહિતી WhatsApp અથવા વેબસાઇટ બુકિંગ માટે ઉપયોગમાં લેવામાં આવશે.',
     yourName: 'તમારું નામ',
     phoneNumber: 'ફોન નંબર',
     selectService: 'સેવા પસંદ કરો',
@@ -204,6 +210,8 @@ const translations = {
     selectTime: 'સમય પસંદ કરો',
     submit: 'બુકિંગ કન્ફર્મ કરો',
     bookOnWhatsapp: 'WhatsApp પર બુક કરો',
+    bookViaWhatsapp: 'WhatsApp દ્વારા બુક કરો',
+    bookOnWebsite: 'વેબસાઇટ પર બુકિંગ કરો',
     bookingSuccess: '🎉 તમારી એપોઇન્ટમેન્ટ બુક થઈ ગઈ છે! અમે ટૂંક સમયમાં ફોન કરીશું.',
     namePlaceholder: 'તમારું પૂરું નામ લખો',
     phonePlaceholder: '10 અંકનો મોબાઇલ નંબર',

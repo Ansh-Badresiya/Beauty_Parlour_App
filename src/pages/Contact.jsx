@@ -2,7 +2,7 @@ import { Phone, MapPin, Clock, MessageCircle, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { demoSettings } from '../data/demoData';
 
-const WHATSAPP_NUMBER = '7096672804';
+const WHATSAPP_NUMBER = '7096642804';
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -61,7 +61,7 @@ export default function Contact() {
               <MapPin className="w-6 h-6 text-purple-600" />
             </div>
             <p className="font-semibold text-gray-800 mb-1">{t.address}</p>
-            <p className="text-gray-600 text-sm leading-relaxed">Near Main Chowk, Opp. Temple,<br />Your Town, Gujarat</p>
+            <p className="text-gray-600 text-sm leading-relaxed">Sarasvatnagar-3, I/O Veer Imitation,<br/>near Jalaramnagar society,<br /> new 80 feet road, <br/> Wadhwan, Surendranagar, Gujarat.</p>
           </div>
         </div>
 
@@ -78,7 +78,7 @@ export default function Contact() {
               {/* Placeholder — replace src with real Google Maps embed */}
               <iframe
                 title="Krisha Beauty Parlour Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.8941946073!2d72.58408!3d23.04137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAyJzI4LjkiTiA3MsKwMzUnMDIuNyJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d229.99723291888134!2d71.6590634!3d22.7298869!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959413097d65195%3A0x818a4646485ffbd7!2sKrisha%20Beauty%20Parlour!5e0!3m2!1sen!2sin!4v1779919938077!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

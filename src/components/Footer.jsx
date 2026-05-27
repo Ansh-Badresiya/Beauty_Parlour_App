@@ -94,7 +94,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-pink-200 text-sm">
                 <MapPin className="w-4 h-4 text-pink-400 mt-0.5 shrink-0" />
-                <span>Near Main Chowk, Opp. Temple,<br />Your Town, Gujarat - 000000</span>
+                <span>Sarasvatnagar-3, I/O Veer Imitation,<br/>near Jalaramnagar society,<br /> new 80 feet road, <br/> Wadhwan, Surendranagar, Gujarat.</span>
               </li>
               <li>
                 <a
@@ -102,7 +102,7 @@ export default function Footer() {
                   className="flex items-center gap-3 text-pink-200 hover:text-white text-sm transition-colors"
                 >
                   <Phone className="w-4 h-4 text-pink-400 shrink-0" />
-                  <span>+91 98765 43210</span>
+                  <span>+91 70966 42804</span>
                 </a>
               </li>
               <li className="flex items-start gap-3 text-pink-200 text-sm">
