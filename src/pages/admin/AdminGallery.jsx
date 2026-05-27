@@ -14,7 +14,7 @@ export default function AdminGallery() {
   const [loading, setLoading] = useState(true);
   const [isAdding, setIsAdding] = useState(false);
   const [editingId, setEditingId] = useState(null);
-  const [formData, setFormData] = useState({ category: 'bridal', image_url: '', caption: '' });
+  const [formData, setFormData] = useState({ category: 'bridal', image_url: '', caption: '', cloudinary_id: '' });
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -35,7 +35,7 @@ export default function AdminGallery() {
   }, []);
 
   const handleAdd = () => {
-    setFormData({ category: 'bridal', image_url: '', caption: '' });
+    setFormData({ category: 'bridal', image_url: '', caption: '', cloudinary_id: '' });
     setEditingId(null);
     setIsAdding(true);
     setPreviewUrl(null);
@@ -68,9 +68,10 @@ export default function AdminGallery() {
       );
 
       const data = await response.json();
-      if (data.secure_url) {
-        setFormData(prev => ({ ...prev, image_url: data.secure_url }));
+      if (data.secure_url && data.public_id) {
+        setFormData(prev => ({ ...prev, image_url: data.secure_url, cloudinary_id: data.public_id }));
         console.log('✅ Image uploaded to Cloudinary:', data.secure_url);
+        console.log('📁 Public ID:', data.public_id);
       } else {
         alert('Failed to upload image. Check your upload preset name.');
       }
@@ -93,7 +94,16 @@ export default function AdminGallery() {
     setSaving(true);
     try {
       if (isAdding) {
-        await addDoc(collection(db, 'gallery'), formData);
+        // Validate image URL before saving
+        if (!formData.image_url) {
+          alert('Please upload an image first');
+          setSaving(false);
+          return;
+        }
+        
+        console.log('💾 Saving to Firebase:', formData);
+        const docRef = await addDoc(collection(db, 'gallery'), formData);
+        console.log('✅ Document saved with ID:', docRef.id);
       } else {
         const { id, ...dataToUpdate } = formData;
         await updateDoc(doc(db, 'gallery', id), dataToUpdate);
@@ -101,21 +111,43 @@ export default function AdminGallery() {
       await fetchGallery();
       setIsAdding(false);
       setEditingId(null);
-      setFormData({ category: 'bridal', image_url: '', caption: '' });
+      setFormData({ category: 'bridal', image_url: '', caption: '', cloudinary_id: '' });
       setPreviewUrl(null);
+      alert('✅ Image saved successfully!');
     } catch (error) {
       console.error("Error saving image:", error);
-      alert("Error saving image");
+      alert("Error saving image: " + error.message);
     } finally {
       setSaving(false);
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id, cloudinaryId) => {
     if (window.confirm('Are you sure you want to delete this image?')) {
       try {
+        // Delete from Cloudinary first
+        if (cloudinaryId) {
+          try {
+            const deleteResponse = await fetch('/api/delete-cloudinary-image', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ public_id: cloudinaryId }),
+            });
+            const deleteResult = await deleteResponse.json();
+            if (deleteResult.success) {
+              console.log('✅ Image deleted from Cloudinary');
+            } else {
+              console.warn('⚠️ Could not delete from Cloudinary:', deleteResult.error);
+            }
+          } catch (cloudError) {
+            console.error('Error deleting from Cloudinary:', cloudError);
+          }
+        }
+        
+        // Delete from Firebase
         await deleteDoc(doc(db, 'gallery', id));
         await fetchGallery();
+        alert('Image deleted successfully!');
       } catch (error) {
         console.error("Error deleting image:", error);
         alert("Error deleting image");
@@ -220,7 +252,7 @@ export default function AdminGallery() {
                   <button onClick={() => handleEdit(img)} className="p-1.5 bg-blue-500/80 text-white rounded-lg hover:bg-blue-600">
                     <Edit2 className="w-4 h-4" />
                   </button>
-                  <button onClick={() => handleDelete(img.id)} className="p-1.5 bg-red-500/80 text-white rounded-lg hover:bg-red-600">
+                  <button onClick={() => handleDelete(img.id, img.cloudinary_id)} className="p-1.5 bg-red-500/80 text-white rounded-lg hover:bg-red-600">
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
