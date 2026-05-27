@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useSearchParams, Link } from 'react-router-dom';
 import { CheckCircle, Calendar, Clock, User, Phone, ChevronDown, Sparkles, Heart } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { demoServices, demoSettings } from '../data/demoData';
+import { demoSettings } from '../data/demoData';
 import { db } from '../firebase/config';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 const WHATSAPP_NUMBER = '7096642804';
 
@@ -25,6 +25,26 @@ export default function BookAppointment() {
   const preService = searchParams.get('service') || '';
   const [submitted, setSubmitted] = useState(false);
   const [bookingData, setBookingData] = useState(null);
+  const [services, setServices] = useState([]);
+  const [loadingServices, setLoadingServices] = useState(true);
+
+  // Fetch services from Firebase
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const snap = await getDocs(collection(db, 'services'));
+        const servicesList = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setServices(servicesList);
+        console.log('✅ Services loaded:', servicesList);
+      } catch (error) {
+        console.error("Error fetching services:", error);
+        setServices([]);
+      } finally {
+        setLoadingServices(false);
+      }
+    };
+    fetchServices();
+  }, []);
 
   const {
     register,
@@ -187,15 +207,17 @@ export default function BookAppointment() {
                   <select
                     {...register('service', { required: t.required })}
                     className="w-full px-4 py-3.5 rounded-xl border-2 border-gray-200 focus:border-rose-400 focus:outline-none text-base transition-colors bg-white appearance-none pr-10"
+                    disabled={loadingServices}
                   >
-                    <option value="">{t.selectService}</option>
-                    {demoServices.map(s => (
+                    <option value="">{loadingServices ? 'Loading services...' : t.selectService}</option>
+                    {services.map(s => (
                       <option key={s.id} value={s.name_en}>{lang === 'gu' ? s.name_gu : s.name_en} — ₹{s.price}</option>
                     ))}
                   </select>
                   <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
                 </div>
                 {errors.service && <p className="text-rose-500 text-xs mt-1">{errors.service.message}</p>}
+                {!loadingServices && services.length === 0 && <p className="text-amber-600 text-xs mt-1">⚠️ No services available</p>}
               </div>
 
               {/* Date */}
