@@ -39,9 +39,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-14 h-10 overflow-hidden rounded-md group-hover:scale-105 transition-transform">
+            <div className="w-14 h-14 overflow-hidden rounded-full group-hover:scale-105 transition-transform">
               <img
-                src="logo.png"
+                src="logo-1.png"
                 alt="Krisha Beauty Parlour Logo"
                 className="w-full h-full object-cover"
               />

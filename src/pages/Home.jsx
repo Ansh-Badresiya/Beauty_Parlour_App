@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Star, Clock, Phone, MapPin, ChevronRight, Sparkles, Heart, Award } from 'lucide-react';
+import { Star, Clock, Phone, MapPin, ChevronRight, Sparkles, Heart, Award, Flower2, BadgeCheck, Smile, Gem, Scissors} from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import ServiceCard from '../components/ServiceCard';
 import { db } from '../firebase/config';
@@ -81,7 +81,7 @@ export default function Home() {
           <div className="max-w-2xl">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm mb-6">
-              <Sparkles className="w-4 h-4 text-pink-300" />
+              <BadgeCheck className="w-4 h-4 text-pink-300" />
               <span>Trusted Beauty Parlour Since 2019</span>
             </div>
 

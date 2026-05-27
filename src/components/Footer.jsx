@@ -27,8 +27,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center shadow">
-                <Sparkles className="w-5 h-5 text-white" />
+              <div className="w-14 h-14 overflow-hidden rounded-full group-hover:scale-105 transition-transform">
+                <img
+                  src="logo-inv.png"
+                  alt="Krisha Beauty Parlour Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <p className="font-display font-bold text-xl leading-none">Krisha</p>
