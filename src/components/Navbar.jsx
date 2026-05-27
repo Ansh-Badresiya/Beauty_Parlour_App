@@ -39,8 +39,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-pink-400 to-rose-600 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-              <Sparkles className="w-5 h-5 text-white" />
+            <div className="w-14 h-10 overflow-hidden rounded-md group-hover:scale-105 transition-transform">
+              <img
+                src="logo.png"
+                alt="Krisha Beauty Parlour Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <span className="font-display font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-500 leading-none block">

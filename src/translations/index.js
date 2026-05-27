@@ -11,14 +11,14 @@ const translations = {
 
     // Hero
     heroTagline: 'Your Beauty, Our Passion',
-    heroSubtitle: 'Premium beauty services in the comfort of your home. Trusted by hundreds of happy customers.',
+    heroSubtitle: 'Beauty services delivered with care and warmth.',
     bookNow: 'Book Now',
     whatsappUs: 'WhatsApp Us',
     callUs: 'Call Us',
 
     // About
     aboutTitle: 'Welcome to Krisha Beauty Parlour',
-    aboutText: 'We are a family-run beauty parlour dedicated to making every woman feel beautiful and confident. With years of experience and love for our craft, we offer personalized beauty services in a warm, welcoming environment.',
+    aboutText: 'Our goal is to make every customer feel comfortable, happy, and beautiful.',
 
     // Services
     servicesTitle: 'Our Services',
@@ -165,14 +165,14 @@ const translations = {
 
     // Hero
     heroTagline: 'તમારી સુંદરતા, અમારો ઉત્સાહ',
-    heroSubtitle: 'ઘરે આવીને પ્રીમિયમ બ્યૂટી સેવા. સેંકડો ખુશ ગ્રાહકો દ્વારા વિશ્વાસ.',
+    heroSubtitle: 'પ્રેમ અને કાળજી સાથે સુંદરતા વધારતી સેવા.',
     bookNow: 'હવે બુક કરો',
     whatsappUs: 'વ્હોટ્સએપ કરો',
     callUs: 'ફોન કરો',
 
     // About
-    aboutTitle: 'કૃષ્ણા બ્યૂટી પાર્લરમાં આપનું સ્વાગત છે',
-    aboutText: 'અમે એક પારિવારિક બ્યૂટી પાર્લર છીએ જે દરેક મહિલાને સુંદર અને આત્મવિશ્વાસ અનુભવ કરાવવા માટે સમર્પિત છે. વર્ષોના અનુભવ અને અમારી કળા પ્રત્યેના પ્રેમ સાથે, અમે ગરમ, સ્વાગતશીલ વાતાવરણમાં વ્યક્તિગત સૌંદર્ય સેવાઓ પ્રદાન કરીએ છીએ.',
+    aboutTitle: 'ક્રિષા બ્યૂટી પાર્લરમાં આપનું સ્વાગત છે',
+    aboutText: 'દરેક ગ્રાહકને આરામદાયક અનુભવ અને સુંદરતા સાથે ખુશી મળે એ જ અમારો પ્રયાસ છે.',
 
     // Services
     servicesTitle: 'અમારી સેવાઓ',

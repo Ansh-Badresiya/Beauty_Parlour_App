@@ -69,7 +69,7 @@ export default function Home() {
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-rose-900 via-pink-800 to-purple-900" />
         <div className="absolute inset-0 opacity-20"
-          style={{backgroundImage:"url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1200&fit=crop')",backgroundSize:'cover',backgroundPosition:'center'}}
+          style={{backgroundImage:"url('https://plus.unsplash.com/premium_photo-1684407616442-8d5a1b7c978e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",backgroundSize:'cover',backgroundPosition:'center'}}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40" />
 
@@ -82,14 +82,14 @@ export default function Home() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm mb-6">
               <Sparkles className="w-4 h-4 text-pink-300" />
-              <span>Trusted Beauty Parlour Since 2015</span>
+              <span>Trusted Beauty Parlour Since 2019</span>
             </div>
 
             {/* Title */}
             <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
               {t.heroTagline}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-amber-300 mt-1 text-3xl md:text-5xl">
-                — Krisha Beauty
+                — Krisha Beauty Parlour
               </span>
             </h1>
 
@@ -124,7 +124,7 @@ export default function Home() {
             </div>
 
             {/* Trust indicators */}
-            <div className="flex flex-wrap gap-6 mt-10">
+            {/* <div className="flex flex-wrap gap-6 mt-10">
               {[
                 { icon: <Award className="w-5 h-5" />, text: '9+ Years Experience' },
                 { icon: <Star className="w-5 h-5" />, text: '500+ Happy Customers' },
@@ -135,7 +135,7 @@ export default function Home() {
                   <span>{text}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -155,7 +155,7 @@ export default function Home() {
             </h2>
             <p className="text-gray-600 text-base leading-relaxed mb-6">{t.aboutText}</p>
 
-            <div className="grid grid-cols-3 gap-4 mb-6">
+            {/* <div className="grid grid-cols-3 gap-4 mb-6">
               {[
                 { val: '9+', label: 'Years' },
                 { val: '500+', label: 'Clients' },
@@ -166,7 +166,7 @@ export default function Home() {
                   <p className="text-xs text-gray-500 mt-0.5">{label}</p>
                 </div>
               ))}
-            </div>
+            </div> */}
 
             <Link
               to="/services"
