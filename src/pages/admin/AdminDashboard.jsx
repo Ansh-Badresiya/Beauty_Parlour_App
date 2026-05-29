@@ -1,16 +1,39 @@
 import { useState, useEffect } from 'react';
 import AdminLayout from './AdminLayout';
 import { demoServices, demoOffers, demoGallery } from '../../data/demoData';
-import { CalendarCheck, Scissors, Tag, ToggleLeft, ToggleRight, TrendingUp, Database, Loader } from 'lucide-react';
+import { CalendarCheck, Scissors, Tag, ToggleLeft, ToggleRight, Database, Loader } from 'lucide-react';
 import { db } from '../../firebase/config';
-import { collection, getDocs, addDoc, query, limit, orderBy } from 'firebase/firestore';
+import { collection, getDocs, addDoc, query, limit, orderBy, doc, setDoc, getDoc } from 'firebase/firestore';
 
 export default function AdminDashboard() {
   const [bookingEnabled, setBookingEnabled] = useState(true);
-  const [statsData, setStatsData] = useState({ services: 0, offers: 0, appointments: 0, todayAppts: 0 });
+  const [statsData, setStatsData] = useState({ services: 0, offers: 0, appointments: 0 });
   const [recentAppointments, setRecentAppointments] = useState([]);
   const [seeding, setSeeding] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  // Fetch booking setting from Firebase
+  const fetchBookingSetting = async () => {
+    try {
+      const settingDoc = await getDoc(doc(db, 'settings', 'booking'));
+      if (settingDoc.exists()) {
+        setBookingEnabled(settingDoc.data().enabled);
+      }
+    } catch (error) {
+      console.error('Error fetching booking setting:', error);
+    }
+  };
+
+  // Save booking setting to Firebase
+  const toggleBooking = async (newState) => {
+    try {
+      await setDoc(doc(db, 'settings', 'booking'), { enabled: newState });
+      setBookingEnabled(newState);
+    } catch (error) {
+      console.error('Error saving booking setting:', error);
+      alert('Error saving booking setting');
+    }
+  };
 
   const fetchStats = async () => {
     try {
@@ -41,6 +64,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     fetchStats();
+    fetchBookingSetting();
   }, []);
 
   const handleSeed = async () => {
@@ -81,7 +105,6 @@ export default function AdminDashboard() {
     { label: 'Total Services', value: statsData.services, icon: Scissors, color: 'bg-rose-100 text-rose-600' },
     { label: 'Active Offers', value: statsData.offers, icon: Tag, color: 'bg-amber-100 text-amber-600' },
     { label: "Total Appointments", value: statsData.appointments, icon: CalendarCheck, color: 'bg-purple-100 text-purple-600' },
-    { label: 'This Month', value: 47, icon: TrendingUp, color: 'bg-green-100 text-green-600' },
   ];
 
   const statusColor = {
@@ -103,7 +126,7 @@ export default function AdminDashboard() {
             </p>
           </div>
           <button
-            onClick={() => setBookingEnabled(e => !e)}
+            onClick={() => toggleBooking(!bookingEnabled)}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all ${
               bookingEnabled
                 ? 'bg-green-500 text-white hover:bg-green-600'
@@ -134,7 +157,7 @@ export default function AdminDashboard() {
         )}
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-3 md:grid-cols-3 gap-4">
           {stats.map(({ label, value, icon: Icon, color }) => (
             <div key={label} className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
               <div className={`w-11 h-11 rounded-xl ${color} flex items-center justify-center mb-3`}>

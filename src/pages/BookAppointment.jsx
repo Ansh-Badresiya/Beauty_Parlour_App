@@ -3,9 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useSearchParams, Link } from 'react-router-dom';
 import { CheckCircle, Calendar, Clock, User, Phone, ChevronDown, Sparkles, Heart } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { demoSettings } from '../data/demoData';
 import { db } from '../firebase/config';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, getDoc } from 'firebase/firestore';
 
 const WHATSAPP_NUMBER = '7096642804';
 
@@ -27,6 +26,29 @@ export default function BookAppointment() {
   const [bookingData, setBookingData] = useState(null);
   const [services, setServices] = useState([]);
   const [loadingServices, setLoadingServices] = useState(true);
+  const [bookingEnabled, setBookingEnabled] = useState(true);
+  const [checkingBooking, setCheckingBooking] = useState(true);
+
+  // Fetch booking setting from Firebase
+  useEffect(() => {
+    const fetchBookingSetting = async () => {
+      try {
+        const settingDoc = await getDoc(doc(db, 'settings', 'booking'));
+        if (settingDoc.exists()) {
+          setBookingEnabled(settingDoc.data().enabled);
+        } else {
+          // Default to true if setting doesn't exist
+          setBookingEnabled(true);
+        }
+      } catch (error) {
+        console.error('Error fetching booking setting:', error);
+        setBookingEnabled(true); // Default to true on error
+      } finally {
+        setCheckingBooking(false);
+      }
+    };
+    fetchBookingSetting();
+  }, []);
 
   // Fetch services from Firebase
   useEffect(() => {
@@ -96,7 +118,15 @@ export default function BookAppointment() {
     }
   };
 
-  if (!demoSettings.booking_enabled) {
+  if (checkingBooking) {
+    return (
+      <div className="pt-16 min-h-screen flex items-center justify-center px-4">
+        <div className="text-center">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!bookingEnabled) {
     return (
       <div className="pt-16 min-h-screen flex items-center justify-center px-4">
         <div className="text-center max-w-sm">

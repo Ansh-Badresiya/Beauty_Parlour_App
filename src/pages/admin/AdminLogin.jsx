@@ -31,11 +31,21 @@ export default function AdminLogin() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-            <Sparkles className="w-8 h-8 text-white" />
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full overflow-hidden shadow-lg">
+            <img
+              src="logo.png"
+              alt="Krisha Beauty Parlour Logo"
+              className="w-full h-full object-contain"
+            />
           </div>
-          <h1 className="font-display text-2xl font-bold text-gray-800">Admin Login</h1>
-          <p className="text-gray-500 text-sm mt-1">Krisha Beauty Parlour</p>
+
+          <h1 className="font-display text-2xl font-bold text-gray-800">
+            Admin Login
+          </h1>
+
+          <p className="text-gray-500 text-sm mt-1">
+            Krisha Beauty Parlour
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="glass-card rounded-3xl p-7 shadow-xl space-y-5">

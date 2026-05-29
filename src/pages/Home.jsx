@@ -82,7 +82,7 @@ export default function Home() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm mb-6">
               <BadgeCheck className="w-4 h-4 text-pink-300" />
-              <span>Trusted Beauty Parlour Since 2019</span>
+              <span>Trusted Beauty Parlour Since 2021</span>
             </div>
 
             {/* Title */}

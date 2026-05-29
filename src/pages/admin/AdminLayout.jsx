@@ -32,11 +32,11 @@ export default function AdminLayout({ children }) {
       {/* Brand */}
       <div className="p-5 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-white" />
+          <div className="w-14 h-14 overflow-hidden rounded-full bg-white/20 flex items-center justify-center">
+            <Sparkles className="w-8 h-8 text-white" />
           </div>
           <div>
-            <p className="font-display font-bold text-white text-base leading-none">Krisha</p>
+            <p className="font-display font-bold text-white text-base leading-none">Krisha Beauty Parlour</p>
             <p className="text-pink-200 text-xs">Admin Panel</p>
           </div>
         </div>
