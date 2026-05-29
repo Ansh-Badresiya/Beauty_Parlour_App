@@ -3,11 +3,12 @@ import AdminLayout from './AdminLayout';
 import { Plus, Edit2, Trash2, X, Save } from 'lucide-react';
 import { db } from '../../firebase/config';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
-// import { demoServices } from '../../data/demoData';
+import { useLanguage } from '../../context/LanguageContext';
 
 const CATEGORIES = ['facial', 'cleanup', 'waxing', 'hairSpa', 'hairCut', 'hairstyle', 'threading', 'bridalMakeup', 'mehendi', 'sareeDraping'];
 
 export default function AdminServices() {
+  const { t } = useLanguage();
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState(null);
@@ -116,7 +117,7 @@ export default function AdminServices() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
               <select value={formData.category || 'facial'} onChange={e => setFormData({ ...formData, category: e.target.value })} className="w-full p-2.5 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-rose-400 focus:outline-none">
-                {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+                {CATEGORIES.map(c => <option key={c} value={c}>{t[c] || c}</option>)}
               </select>
             </div>
             <div className="grid grid-cols-2 gap-4">
