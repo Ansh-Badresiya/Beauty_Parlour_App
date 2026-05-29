@@ -6,7 +6,7 @@ import { db } from '../firebase/config';
 import { collection, getDocs } from 'firebase/firestore';
 // import { demoServices } from '../data/demoData';
 
-const CATEGORIES = ['all', 'facial', 'cleanup', 'waxing', 'hairSpa', 'hairCut', 'threading', 'bridalMakeup', 'mehendi', 'sareeDraping'];
+const CATEGORIES = ['all', 'facial', 'cleanup', 'waxing', 'hairSpa', 'hairCut', 'hairstyle', 'threading', 'bridalMakeup', 'mehendi', 'sareeDraping'];
 
 export default function Services() {
   const { t } = useLanguage();

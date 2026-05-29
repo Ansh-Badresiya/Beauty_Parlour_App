@@ -15,6 +15,7 @@ export default function ServiceCard({ service, compact = false }) {
     waxing: 'bg-amber-100 text-amber-600',
     hairSpa: 'bg-purple-100 text-purple-600',
     hairCut: 'bg-blue-100 text-blue-600',
+    hairstyle: 'bg-cyan-100 text-cyan-600',
     threading: 'bg-green-100 text-green-600',
     bridalMakeup: 'bg-pink-100 text-pink-700',
     mehendi: 'bg-emerald-100 text-emerald-700',

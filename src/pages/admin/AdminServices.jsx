@@ -5,7 +5,7 @@ import { db } from '../../firebase/config';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 // import { demoServices } from '../../data/demoData';
 
-const CATEGORIES = ['facial', 'cleanup', 'waxing', 'hairSpa', 'hairCut', 'hairStyling', 'threading', 'bridalMakeup', 'mehendi', 'sareeDraping'];
+const CATEGORIES = ['facial', 'cleanup', 'waxing', 'hairSpa', 'hairCut', 'hairstyle', 'threading', 'bridalMakeup', 'mehendi', 'sareeDraping'];
 
 export default function AdminServices() {
   const [services, setServices] = useState([]);

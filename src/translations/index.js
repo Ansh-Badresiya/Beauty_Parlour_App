@@ -39,6 +39,7 @@ const translations = {
     bridalMakeup: 'Bridal Makeup',
     mehendi: 'Mehendi',
     sareeDraping: 'Saree Draping',
+    hairstyle: 'Hair Style',
 
     // Booking
     bookingTitle: 'Book an Appointment',
@@ -197,6 +198,7 @@ const translations = {
     bridalMakeup: 'બ્રાઇડલ મેકઅપ',
     mehendi: 'મહેંદી',
     sareeDraping: 'સાડી ડ્રેપિંગ',
+    hairstyle: 'હેર સ્ટાઈલ',
 
     // Booking
     bookingTitle: 'એપોઇન્ટમેન્ટ બુક કરો',
