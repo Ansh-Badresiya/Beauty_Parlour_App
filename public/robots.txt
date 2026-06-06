@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow indexing for admin routes
+Disallow: /admin
+Disallow: /admin/dashboard
+Disallow: /admin/services
+Disallow: /admin/offers
+Disallow: /admin/gallery
+Disallow: /admin/appointments
+
+Sitemap: https://krisha-beauty-parlour.vercel.app/sitemap.xml
