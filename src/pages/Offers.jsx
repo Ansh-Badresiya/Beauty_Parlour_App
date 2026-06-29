@@ -12,15 +12,16 @@ export default function Offers() {
   const { t, lang } = useLanguage();
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
     const fetchOffers = async () => {
       try {
         const snap = await getDocs(collection(db, 'offers'));
-        // Only show active offers to public
         setOffers(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })).filter(o => o.active));
       } catch (error) {
         console.error("Error fetching offers:", error);
+        setFetchError(true);
       } finally {
         setLoading(false);
       }
@@ -49,6 +50,11 @@ export default function Offers() {
         {loading ? (
           <div className="flex justify-center py-20">
             <span className="w-10 h-10 border-4 border-rose-200 border-t-rose-500 rounded-full animate-spin"></span>
+          </div>
+        ) : fetchError ? (
+          <div className="text-center py-20 bg-red-50 rounded-2xl border border-red-100">
+            <p className="text-red-500 font-medium mb-1">⚠️ Could not load offers</p>
+            <p className="text-gray-400 text-sm">Please try again later or contact us on WhatsApp.</p>
           </div>
         ) : offers.length === 0 ? (
           <div className="text-center py-20">

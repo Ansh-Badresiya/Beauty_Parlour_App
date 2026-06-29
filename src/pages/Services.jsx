@@ -13,6 +13,7 @@ export default function Services() {
   const [active, setActive] = useState('all');
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -21,6 +22,7 @@ export default function Services() {
         setServices(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       } catch (error) {
         console.error("Error fetching services:", error);
+        setFetchError(true);
       } finally {
         setLoading(false);
       }
@@ -67,6 +69,11 @@ export default function Services() {
         {loading ? (
           <div className="flex justify-center py-20">
             <span className="w-10 h-10 border-4 border-rose-200 border-t-rose-500 rounded-full animate-spin"></span>
+          </div>
+        ) : fetchError ? (
+          <div className="text-center py-20 bg-red-50 rounded-2xl border border-red-100">
+            <p className="text-red-500 font-medium mb-1">⚠️ Could not load services</p>
+            <p className="text-gray-400 text-sm">Please try again later or contact us on WhatsApp.</p>
           </div>
         ) : filtered.length === 0 ? (
           <div className="text-center py-20 text-gray-400">No services found.</div>

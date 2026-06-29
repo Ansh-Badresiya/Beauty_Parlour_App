@@ -28,6 +28,7 @@ export default function BookAppointment() {
   const [loadingServices, setLoadingServices] = useState(true);
   const [bookingEnabled, setBookingEnabled] = useState(true);
   const [checkingBooking, setCheckingBooking] = useState(true);
+  const [servicesFetchError, setServicesFetchError] = useState(false);
 
   // Fetch booking setting from Firebase
   useEffect(() => {
@@ -61,6 +62,7 @@ export default function BookAppointment() {
       } catch (error) {
         console.error("Error fetching services:", error);
         setServices([]);
+        setServicesFetchError(true);
       } finally {
         setLoadingServices(false);
       }
@@ -231,7 +233,8 @@ export default function BookAppointment() {
                   <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
                 </div>
                 {errors.service && <p className="text-rose-500 text-xs mt-1">{errors.service.message}</p>}
-                {!loadingServices && services.length === 0 && <p className="text-amber-600 text-xs mt-1">⚠️ No services available</p>}
+                {!loadingServices && services.length === 0 && !servicesFetchError && <p className="text-amber-600 text-xs mt-1">⚠️ No services available</p>}
+                {servicesFetchError && <p className="text-red-500 text-xs mt-1">⚠️ Could not load services. Please book via WhatsApp below.</p>}
               </div>
 
               {/* Date */}
